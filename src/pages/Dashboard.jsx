@@ -112,9 +112,9 @@ function Dashboard({ onNavigate, user }) {
                 <p className="text-white text-sm font-medium mb-1 opacity-90">
                   {account.name}
                 </p>
-                <p className="text-white text-lg font-bold">
-                  {account.currency} {(account.balance / 1000).toFixed(3)}
-                </p>
+               <p className="text-white text-lg font-bold">
+  {account.currency} {account.balance.toLocaleString('es-CO')}
+</p>
               </button>
             ))
           ) : (
