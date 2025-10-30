@@ -71,7 +71,7 @@ function AddAccount({ onNavigate, user }) {
   return (
     <div className="min-h-screen bg-[#1C1C1E]">
       <div className="bg-[#1C1C1E] px-4 pt-12 pb-4 flex items-center justify-between">
-        <button 
+        <button
           onClick={() => onNavigate('dashboard')}
           className="w-12 h-12 flex items-center justify-center"
         >
@@ -82,7 +82,7 @@ function AddAccount({ onNavigate, user }) {
 
         <h1 className="text-white text-xl font-semibold">Nueva cuenta</h1>
 
-        <button 
+        <button
           onClick={handleSave}
           disabled={loading}
           className="w-12 h-12 flex items-center justify-center"
@@ -94,6 +94,7 @@ function AddAccount({ onNavigate, user }) {
       </div>
 
       <div className="px-4 py-6 space-y-6">
+        {/* Nombre de la cuenta */}
         <div>
           <label className="text-gray-500 text-sm mb-2 block">
             Nombre de la cuenta
@@ -107,6 +108,7 @@ function AddAccount({ onNavigate, user }) {
           />
         </div>
 
+        {/* Número de cuenta bancaria */}
         <div>
           <label className="text-gray-500 text-sm mb-2 block">
             Número de cuenta bancaria
@@ -120,6 +122,7 @@ function AddAccount({ onNavigate, user }) {
           />
         </div>
 
+        {/* Tipo */}
         <div>
           <label className="text-gray-500 text-sm mb-2 block">
             Tipo
@@ -135,26 +138,21 @@ function AddAccount({ onNavigate, user }) {
           </button>
         </div>
 
+        {/* Valor inicial - INPUT DIRECTO ✅ */}
         <div>
           <label className="text-gray-500 text-sm mb-2 block">
             Valor inicial
           </label>
-          <button
-            onClick={() => {
-              const newValue = prompt('Ingresa el valor inicial:', initialBalance)
-              if (newValue !== null) {
-                setInitialBalance(newValue)
-              }
-            }}
-            className="w-full text-left border-b border-gray-700 text-white text-lg py-3 flex items-center justify-between"
-          >
-            <span>{initialBalance}</span>
-            <svg className="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-            </svg>
-          </button>
+          <input
+            type="number"
+            value={initialBalance}
+            onChange={(e) => setInitialBalance(e.target.value)}
+            placeholder="0"
+            className="w-full bg-transparent border-b border-gray-700 text-white text-lg py-3 focus:outline-none focus:border-[#3B82F6]"
+          />
         </div>
 
+        {/* Moneda */}
         <div>
           <label className="text-gray-500 text-sm mb-2 block">
             Moneda
@@ -170,6 +168,7 @@ function AddAccount({ onNavigate, user }) {
           </button>
         </div>
 
+        {/* Color */}
         <div>
           <label className="text-gray-500 text-sm mb-2 block">
             Color
@@ -187,6 +186,7 @@ function AddAccount({ onNavigate, user }) {
         </div>
       </div>
 
+      {/* Modal selector de tipo */}
       {showTypePicker && (
         <div className="fixed inset-0 bg-black/50 flex items-end z-50">
           <div className="bg-[#2D2D2F] rounded-t-3xl w-full p-6 pb-safe">
@@ -199,9 +199,8 @@ function AddAccount({ onNavigate, user }) {
                     setType(accountType.value)
                     setShowTypePicker(false)
                   }}
-                  className={`w-full text-left px-4 py-3 rounded-xl ${
-                    type === accountType.value ? 'bg-[#3B82F6] text-white' : 'bg-[#3A3A3C] text-white'
-                  }`}
+                  className={`w-full text-left px-4 py-3 rounded-xl ${type === accountType.value ? 'bg-[#3B82F6] text-white' : 'bg-[#3A3A3C] text-white'
+                    }`}
                 >
                   {accountType.label}
                 </button>
@@ -217,6 +216,7 @@ function AddAccount({ onNavigate, user }) {
         </div>
       )}
 
+      {/* Modal selector de moneda */}
       {showCurrencyPicker && (
         <div className="fixed inset-0 bg-black/50 flex items-end z-50">
           <div className="bg-[#2D2D2F] rounded-t-3xl w-full p-6 pb-safe">
@@ -229,9 +229,8 @@ function AddAccount({ onNavigate, user }) {
                     setCurrency(curr.value)
                     setShowCurrencyPicker(false)
                   }}
-                  className={`w-full text-left px-4 py-3 rounded-xl ${
-                    currency === curr.value ? 'bg-[#3B82F6] text-white' : 'bg-[#3A3A3C] text-white'
-                  }`}
+                  className={`w-full text-left px-4 py-3 rounded-xl ${currency === curr.value ? 'bg-[#3B82F6] text-white' : 'bg-[#3A3A3C] text-white'
+                    }`}
                 >
                   {curr.label}
                 </button>
@@ -247,6 +246,7 @@ function AddAccount({ onNavigate, user }) {
         </div>
       )}
 
+      {/* Modal selector de color */}
       {showColorPicker && (
         <div className="fixed inset-0 bg-black/50 flex items-end z-50">
           <div className="bg-[#2D2D2F] rounded-t-3xl w-full p-6 pb-safe">

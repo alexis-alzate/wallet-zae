@@ -68,7 +68,7 @@ function AddTransaction({ onNavigate, user }) {
     <div className="min-h-screen bg-[#4A9B9B] relative">
       {/* Header */}
       <div className="bg-[#4A9B9B] px-4 pt-12 pb-4 flex items-center justify-between">
-        <button 
+        <button
           onClick={() => onNavigate('dashboard')}
           className="w-12 h-12 flex items-center justify-center"
         >
@@ -77,7 +77,7 @@ function AddTransaction({ onNavigate, user }) {
           </svg>
         </button>
 
-        <button 
+        <button
           onClick={handleSave}
           className="w-12 h-12 flex items-center justify-center"
         >
@@ -145,7 +145,7 @@ function AddTransaction({ onNavigate, user }) {
         {/* Display de monto */}
         <div className="flex items-center gap-4 mb-12">
           <p className="text-white text-7xl font-light">
-            {amount}
+            {parseFloat(amount || 0).toLocaleString('es-CO')}
           </p>
           <p className="text-white text-3xl font-light">
             COP
