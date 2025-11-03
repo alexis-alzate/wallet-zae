@@ -22,11 +22,11 @@ function Dashboard({ onNavigate, user }) {
 
   return (
     <div className="min-h-screen bg-[#1C1C1E] pb-20">
-      {/* Header - SIN PADDING LATERAL */}
-      <div className="bg-[#1C1C1E] px-3 pt-14 pb-4 flex items-center justify-between">
+      {/* Header - EDGE TO EDGE con padding consistente */}
+      <div className="w-full bg-[#1C1C1E] px-4 pt-14 pb-4 flex items-center justify-between">
         <button
           onClick={() => onNavigate('settings')}
-          className="w-10 h-10 flex items-center justify-center -ml-1"
+          className="w-10 h-10 flex items-center justify-center -ml-2"
         >
           <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
@@ -37,7 +37,7 @@ function Dashboard({ onNavigate, user }) {
 
         <button
           onClick={() => onNavigate('notifications')}
-          className="w-10 h-10 flex items-center justify-center -mr-1"
+          className="w-10 h-10 flex items-center justify-center -mr-2"
         >
           <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
             <path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z" />
@@ -45,9 +45,9 @@ function Dashboard({ onNavigate, user }) {
         </button>
       </div>
 
-      {/* Tabs */}
-      <div className="bg-[#1C1C1E] px-3">
-        <div className="flex gap-8 border-b border-gray-800">
+      {/* Tabs - EDGE TO EDGE */}
+      <div className="w-full bg-[#1C1C1E] px-4">
+        <div className="w-full flex gap-8 border-b border-gray-800">
           <button
             onClick={() => setActiveTab('accounts')}
             className={`pb-3 text-xs font-bold relative whitespace-nowrap ${activeTab === 'accounts' ? 'text-white' : 'text-gray-500'
@@ -71,10 +71,9 @@ function Dashboard({ onNavigate, user }) {
         </div>
       </div>
 
-      {/* Contenido - SIN PADDING LATERAL EXCESIVO */}
-      <div className="px-3 pt-5">
-        {/* Lista de cuentas header */}
-        <div className="flex items-center justify-between mb-3">
+      {/* Header de lista de cuentas - CON PADDING */}
+      <div className="w-full px-4 pt-5">
+        <div className="w-full flex items-center justify-between mb-3">
           <h2 className="text-white text-base font-semibold">Lista de cuentas</h2>
           <button className="text-white p-1.5">
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -83,19 +82,21 @@ function Dashboard({ onNavigate, user }) {
             </svg>
           </button>
         </div>
+      </div>
 
-        {/* Grid de cuentas - 3 COLUMNAS */}
-        <div className="grid grid-cols-3 gap-2 mb-3">
+      {/* Grid de cuentas - EDGE TO EDGE CON GAP COMO BUDGETBAKERS */}
+      <div className="w-full mb-3 px-2">
+        <div className="w-full grid grid-cols-3 gap-2">
           {accounts.length > 0 ? (
             <>
               {accounts.map((account) => (
                 <button
                   key={account.id}
                   onClick={() => console.log('Ver cuenta:', account.id)}
-                  className="rounded-lg p-2.5 text-left active:scale-95 transition-all"
+                  className="rounded-md p-1.5 text-left active:scale-95 transition-all"
                   style={{
                     backgroundColor: account.color,
-                    minHeight: '65px'
+                    minHeight: '50px'
                   }}
                 >
                   <p className="text-white text-[10px] font-medium mb-1 opacity-90 truncate leading-tight">
@@ -110,8 +111,8 @@ function Dashboard({ onNavigate, user }) {
               {/* Botón Añadir Cuenta - EN LA ÚLTIMA POSICIÓN */}
               <button
                 onClick={() => onNavigate('add-account')}
-                className="rounded-lg border-2 border-dashed border-[#3B82F6] bg-transparent flex flex-col items-center justify-center gap-0.5 active:scale-95 transition-transform"
-                style={{ minHeight: '65px' }}
+                className="rounded-md border-2 border-dashed border-[#3B82F6] bg-transparent flex flex-col items-center justify-center gap-0.5 active:scale-95 transition-transform"
+                style={{ minHeight: '50px' }}
               >
                 <div className="w-7 h-7 rounded-full bg-[#3B82F6] flex items-center justify-center">
                   <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -124,23 +125,23 @@ function Dashboard({ onNavigate, user }) {
             </>
           ) : (
             <>
-              <div className="rounded-lg p-2.5 bg-[#20B2AA]" style={{ minHeight: '65px' }}>
+              <div className="rounded-md p-1.5 bg-[#20B2AA]" style={{ minHeight: '50px' }}>
                 <p className="text-white text-[10px] font-medium mb-1 opacity-90 leading-tight">Bancolombia</p>
                 <p className="text-white text-xs font-bold leading-tight">COP 259.000</p>
               </div>
-              <div className="rounded-lg p-2.5 bg-[#3B82F6]" style={{ minHeight: '65px' }}>
+              <div className="rounded-md p-1.5 bg-[#3B82F6]" style={{ minHeight: '50px' }}>
                 <p className="text-white text-[10px] font-medium mb-1 opacity-90 leading-tight">Efectivo</p>
                 <p className="text-white text-xs font-bold leading-tight">COP 3.200</p>
               </div>
-              <div className="rounded-lg p-2.5 bg-[#10B981]" style={{ minHeight: '65px' }}>
+              <div className="rounded-md p-1.5 bg-[#10B981]" style={{ minHeight: '50px' }}>
                 <p className="text-white text-[10px] font-medium mb-1 opacity-90 leading-tight">Nequi</p>
                 <p className="text-white text-xs font-bold leading-tight">COP 14.000</p>
               </div>
-              <div className="rounded-lg p-2.5 bg-[#A855F7]" style={{ minHeight: '65px' }}>
+              <div className="rounded-md p-1.5 bg-[#A855F7]" style={{ minHeight: '50px' }}>
                 <p className="text-white text-[10px] font-medium mb-1 opacity-90 leading-tight">Dollar App</p>
                 <p className="text-white text-xs font-bold leading-tight">$0.43</p>
               </div>
-              <div className="rounded-lg p-2.5 bg-[#EC4899]" style={{ minHeight: '65px' }}>
+              <div className="rounded-md p-1.5 bg-[#EC4899]" style={{ minHeight: '50px' }}>
                 <p className="text-white text-[10px] font-medium mb-1 opacity-90 leading-tight">People</p>
                 <p className="text-white text-xs font-bold leading-tight">COP 0</p>
               </div>
@@ -148,8 +149,8 @@ function Dashboard({ onNavigate, user }) {
               {/* Botón Añadir Cuenta */}
               <button
                 onClick={() => onNavigate('add-account')}
-                className="rounded-lg border-2 border-dashed border-[#3B82F6] bg-transparent flex flex-col items-center justify-center gap-0.5 active:scale-95 transition-transform"
-                style={{ minHeight: '65px' }}
+                className="rounded-md border-2 border-dashed border-[#3B82F6] bg-transparent flex flex-col items-center justify-center gap-0.5 active:scale-95 transition-transform"
+                style={{ minHeight: '50px' }}
               >
                 <div className="w-7 h-7 rounded-full bg-[#3B82F6] flex items-center justify-center">
                   <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -162,9 +163,12 @@ function Dashboard({ onNavigate, user }) {
             </>
           )}
         </div>
+      </div>
 
-        {/* Sección REGISTROS */}
-        <div className="mb-3">
+      {/* Resto del contenido - CON PADDING */}
+      <div className="w-full px-4">
+        {/* Sección REGISTROS - FULL WIDTH */}
+        <div className="w-full mb-3">
           <button
             onClick={() => onNavigate('transactions')}
             className="w-full bg-[#2D2D2F] rounded-lg px-3 py-2.5 flex items-center justify-center gap-2"
@@ -176,8 +180,8 @@ function Dashboard({ onNavigate, user }) {
           </button>
         </div>
 
-        {/* Pills horizontales */}
-        <div className="flex gap-2 mb-4 overflow-x-auto scrollbar-hide">
+        {/* Pills horizontales - FULL WIDTH SCROLL */}
+        <div className="w-full flex gap-2 mb-4 overflow-x-auto scrollbar-hide">
           <button className="flex items-center gap-1.5 bg-[#2D2D2F] rounded-full px-3 py-1.5 whitespace-nowrap">
             <svg className="w-4 h-4 text-red-500" fill="currentColor" viewBox="0 0 20 20">
               <path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4z" />
@@ -202,9 +206,9 @@ function Dashboard({ onNavigate, user }) {
           </button>
         </div>
 
-        {/* Tendencia del saldo */}
-        <div className="mb-5">
-          <div className="flex items-center justify-between mb-2">
+        {/* Tendencia del saldo - FULL WIDTH */}
+        <div className="w-full mb-5">
+          <div className="w-full flex items-center justify-between mb-2">
             <h3 className="text-white text-base font-semibold">Tendencia del saldo</h3>
             <button className="text-gray-500">
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
@@ -213,9 +217,9 @@ function Dashboard({ onNavigate, user }) {
             </button>
           </div>
 
-          <div className="bg-[#2D2D2F] rounded-lg p-3">
-            <div className="mb-3">
-              <div className="flex items-start justify-between mb-0.5">
+          <div className="w-full bg-[#2D2D2F] rounded-lg p-3">
+            <div className="w-full mb-3">
+              <div className="w-full flex items-start justify-between mb-0.5">
                 <p className="text-gray-400 text-[10px]">HOY</p>
                 <p className="text-[10px] text-gray-400">frente al período anterior</p>
               </div>
@@ -357,4 +361,4 @@ function Dashboard({ onNavigate, user }) {
 }
 
 export default Dashboard
- 
+
